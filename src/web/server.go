@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"runtime"
+	"strconv"
 
 	"html/template"
 	"net/http"
@@ -45,7 +46,7 @@ func Serve(content Content, port int) {
 	fmt.Printf("Running on %s\n", url)
 	fmt.Println("Press 'Ctrl-C' to exit")
 	openBrowser(url)
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe(":" + strconv.Itoa(port), nil))
 }
 
 func executeTemplate() *template.Template {
